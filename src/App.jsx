@@ -1,13 +1,23 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import { ThemeProvider } from "./context/ThemeContext";
+import Home from "./routes/Home";
+import SignIn from "./routes/SignIn";
+import SignUp from "./routes/SignUp";
+import Account from "./routes/Account";
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return;
-  <></>;
+  return (
+    <ThemeProvider>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/" element={<SignIn />} />
+        <Route path="/" element={<SignUp />} />
+        <Route path="/" element={<Account />} />
+      </Routes>
+    </ThemeProvider>
+  );
 }
 
 export default App;
