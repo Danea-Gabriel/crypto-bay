@@ -1,10 +1,10 @@
 import React from "react";
 import SearchInput from "../components/SearchInput";
 
-const Home = () => {
+const Home = ({coins}) => {
   return (
     <div>
-      <SearchInput />
+      <SearchInput coins={coins}/>
     </div>
   );
 };
