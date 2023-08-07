@@ -1,6 +1,10 @@
-import React from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const CoinPage = () => {
+  const [coin, setCoin] = useState({});
+  const url =
+    "https://api.coingecko.com/api/v3/coins/bitcooin?localization=false&sparkline=true";
   return <div>CoinPage</div>;
 };
 
