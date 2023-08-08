@@ -1,4 +1,3 @@
-import React from "react";
 import SearchInput from "../components/SearchInput";
 import TrendingCoins from "../components/TrendingCoins";
 
