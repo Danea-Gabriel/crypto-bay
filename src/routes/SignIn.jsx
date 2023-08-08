@@ -1,4 +1,3 @@
-import React from "react";
 import { AiFillLock, AiOutlineMail } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
@@ -9,7 +8,7 @@ const SignIn = () => {
         <h1 className="text-2xl font-bold">Sign In</h1>
         <form>
           <div className="my-4">
-            <label> Email</label>
+            <label>Email</label>
             <div className="my-2 w-full relative rounded-2xl shadow-xl">
               <input
                 className="w-full p-2 bg-primary  border-input rounded-2xl"
@@ -33,7 +32,7 @@ const SignIn = () => {
           </button>
         </form>
         <p>
-          Don't have an account ?{" "}
+          Don't have an account ?
           <Link to="/singup" className="text-accent">
             Sing up
           </Link>
