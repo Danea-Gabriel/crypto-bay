@@ -1,20 +1,50 @@
 /* eslint-disable react/prop-types */
-import { AiOutlineStar } from "react-icons/ai";
+import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { Sparklines, SparklinesLine } from "react-sparklines";
+import { UserAuth } from "../context/AuthContext";
+import { firestore } from "../firebase";
+import { arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { useState } from "react";
+
 const CoinElement = ({ coin }) => {
+  const [savedCoin, setSavedCoin] = useState(false);
+  const user = UserAuth().user;
+
+  const pathToSave = doc(firestore, "users", `${user?.email}`);
+
+  const saveCoin = async () => {
+    if (user?.email) {
+      setSavedCoin(true);
+      await updateDoc(pathToSave, {
+        watchList: arrayUnion({
+          id: coin.id,
+          name: coin.name,
+          symbol: coin.symbol,
+          image: coin.image,
+          rank: coin.market_cap_rank,
+        }),
+      });
+    } else {
+      alert("Please Sign In to save coins");
+    }
+  };
   return (
     <tr className="h-[80px] border-b overflow-hidden">
-      <td>
-        <AiOutlineStar />
+      <td onClick={saveCoin}>
+        {savedCoin ? <AiFillStar /> : <AiOutlineStar />}
       </td>
       <td>{coin.market_cap_rank}</td>
       <td>
         <Link to={`/coin/${coin.id}`}>
-        <div className="flex items-center">
-          <img src={coin.image} alt="coin" className="w-6 mr-2 rounded-full" />
-          <p className="hidden sm:table-cell">{coin.name}</p>
-        </div>
+          <div className="flex items-center">
+            <img
+              src={coin.image}
+              alt="coin"
+              className="w-6 mr-2 rounded-full"
+            />
+            <p className="hidden sm:table-cell">{coin.name}</p>
+          </div>
         </Link>
       </td>
       <td>{coin.symbol.toUpperCase()}</td>
