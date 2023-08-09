@@ -64,12 +64,11 @@ const Navbar = () => {
         }
       >
         <ul className="w-full p-4">
-          <li className="border-b py-6">
+          <li onClick={handleMenu} className="border-b py-6">
             <Link to="/">Home</Link>
           </li>
-          <li className="border-b py-6">
-            {" "}
-            <Link to="/">Account</Link>
+          <li onClick={handleMenu} className="border-b py-6">
+            <Link to="/account">Account</Link>
           </li>
           <li className="border-b py-6">
             <ToggleTheme />
@@ -77,13 +76,16 @@ const Navbar = () => {
         </ul>
         <div className="flex flex-col w-full p-4">
           <Link to="/sigin">
-            <button className="w-full my-2 p-3 bg-primary text-primary  border-secondary rounded-2xl shadow-xl">
+            <button
+            onClick={handleMenu}
+            className="w-full my-2 p-3 bg-primary text-primary  border-secondary rounded-2xl shadow-xl">
               Sign In
             </button>
           </Link>
           <Link to="/sigup">
-            {" "}
-            <button className="w-full my-2 p-3 bg-button text-btnText rounded-2xl shdow-xl">
+            <button
+            onClick={handleMenu}
+            className="w-full my-2 p-3 bg-button text-btnText rounded-2xl shdow-xl">
               Sign Up
             </button>
           </Link>

@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import WatchList from "../components/WatchList";
 import { UserAuth } from "../context/AuthContext";
 
@@ -14,6 +14,9 @@ const Account = () => {
       console.log(err);
     }
   };
+  if(user){
+
+  
   return (
     <div className="max-w-[1140px] mx-auto">
       <div className="flex justify-between items-center my-12 py-8 rounded-div">
@@ -40,6 +43,9 @@ const Account = () => {
       </div>
     </div>
   );
+} else{
+  return <Navigate to="/signin" />
+}
 };
 
 export default Account;
