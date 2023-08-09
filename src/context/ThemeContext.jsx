@@ -18,7 +18,7 @@ const getTheInitialTheme = () => {
 
 export const ThemeContext = createContext();
 
-export const ThemeProvider = ({ initialTheme, children }) => {
+export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(getTheInitialTheme);
 
   const defaultSetTheme = theme => {
@@ -28,10 +28,6 @@ export const ThemeProvider = ({ initialTheme, children }) => {
     root.classList.add(theme);
     localStorage.setItem("color-theme", theme);
   };
-
-  if (initialTheme) {
-    defaultSetTheme(initialTheme);
-  }
 
   useEffect(() => {
     defaultSetTheme(theme);
